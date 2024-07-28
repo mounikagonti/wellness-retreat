@@ -1,9 +1,8 @@
-import {useEffect, useReducer} from 'react'
+import {useCallback, useEffect, useReducer} from 'react'
 import axios from 'axios'
-import {Retreat} from '../Components/Card'
 import {removeEmptyOrNullProperties} from '../lib/utils'
+import {Retreat} from '../Components/Card'
 import {FiltersState} from '../Components/Retreat'
-
 
 // We can use .env for storing the api base url
 axios.defaults.baseURL =
@@ -26,7 +25,7 @@ const useFetchRetreats = (filters: FiltersState) => {
     {data: [], loading: false, error: ''}
   )
 
-  const fetchRetreats = async (): Promise<void> => {
+  const fetchRetreats = useCallback(async (): Promise<void> => {
     setRetreatsInfo({loading: true})
     try {
       // Removing unnecessary filters
@@ -57,11 +56,11 @@ const useFetchRetreats = (filters: FiltersState) => {
     } finally {
       setRetreatsInfo({loading: false})
     }
-  }
+  }, [filters])
 
   useEffect(() => {
     fetchRetreats()
-  }, [filters])
+  }, [fetchRetreats])
 
   return retreatsInfo
 }

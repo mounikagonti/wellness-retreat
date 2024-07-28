@@ -25,10 +25,10 @@ const Card: FC<CardProps> = ({cardInfo}) => {
       <h3 className='font-semibold text-lg py-2'>{title}</h3>
       <p className='text-sm pb-3 font-semibold'>{description}</p>
       <p className='text-sm py-1 font-semibold'>
-        {new Date(date * 1000).toLocaleDateString()}
+        Date: {new Date(date * 1000).toLocaleDateString()}
       </p>
-      <p className='text-sm py-1 font-semibold'>{location}</p>
-      <p className='text-sm py-1 font-semibold'>${price}</p>
+      <p className='text-sm py-1 font-semibold'>Location: {location}</p>
+      <p className='text-sm py-1 font-semibold'>Price: ${price}</p>
     </div>
   )
 }
