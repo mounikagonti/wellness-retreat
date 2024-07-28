@@ -28,4 +28,4 @@ A React.js application for managing wellness retreats.
     # Serve on localhost:3000
     $ npm start or yarn start
 
-The application will be available at http://localhost:3000.
+
